@@ -10,8 +10,8 @@ A Python application that monitors the screen for a specific image and plays an 
 
 ## Requirements
 
-- Python 3.7 or higher
-- See `requirements.txt` for Python package dependencies
+- Python 3.12 or higher
+- `uv` package manager
 
 ## Installation
 
@@ -20,9 +20,9 @@ A Python application that monitors the screen for a specific image and plays an 
    ```bash
    cd alarm
    ```
-3. Install required dependencies:
+3. Install dependencies using `uv`:
    ```bash
-   pip install -r requirements.txt
+   uv sync
    ```
 
 ## Setup
@@ -39,15 +39,16 @@ Before running the application, you need to prepare the following files:
 
 ## Usage
 
-Run the application with:
+Run the application using `uv`:
 
 ```bash
-python alarm.ipynb
+uv run jupyter notebook alarm.ipynb
 ```
 
-Or if using Jupyter Notebook:
+Or activate the virtual environment and run directly:
 
 ```bash
+source .venv/bin/activate  # On Windows: .venv\Scripts\Activate.ps1
 jupyter notebook alarm.ipynb
 ```
 
@@ -69,10 +70,14 @@ You can adjust the detection parameters in the code:
 
 ## Requirements File
 
-The `requirements.txt` file contains:
+The project uses `pyproject.toml` for dependency management, which includes:
 
 - **pyautogui**: For screen automation and image detection
 - **pygame**: For audio playback
+- **opencv-python**: For advanced image matching
+- **Pillow**: For image processing support
+
+Dependencies are managed by `uv` which generates a `uv.lock` file for reproducible installs.
 
 ## Troubleshooting
 
